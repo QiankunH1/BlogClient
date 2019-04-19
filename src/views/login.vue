@@ -5,10 +5,10 @@
         </h3>
         <el-form  label-width="50px"  labelPosition='left'>
             <el-form-item label="账号:">
-                <el-input v-model="formdata.username"  placeholder="请输入您的账号"></el-input>
+                <el-input v-model="userdata.username"  placeholder="请输入您的账号"></el-input>
             </el-form-item>
             <el-form-item label="密码:">
-                <el-input v-model="formdata.password"  placeholder="请输入您的密码"></el-input>
+                <el-input v-model="userdata.password"  placeholder="请输入您的密码"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button><i>登录</i></el-button>
@@ -25,16 +25,16 @@ export default {
   name: "",
   data() {
     return {
-      formdata:{
+      userdata:{
           username:'',
-          password:''
+          password:'',
       }
     };
   },
   methods: {
       toregiter(){
           this.$router.push('/register')
-      }
+      },
   }
 };
 </script>

@@ -5,10 +5,11 @@
             <router-link >博文</router-link>
             <router-link >交流</router-link>
             <router-link >写博文</router-link> -->
-            <span @click="tologin">首页</span>
+            <span @click="toindex">首页</span>
             <span>博文</span>
             <span>交流</span>
             <span>写博文</span>
+            <span @click="tologin">登录</span>
 
         </div>
     </div>
@@ -17,8 +18,11 @@
 <script>
     export default {
         methods: {
-            tologin(){
+            toindex(){
                 this.$router.push('/index')
+            },
+            tologin(){
+                this.$router.push('/login')
             }
         },
     }
