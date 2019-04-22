@@ -11,7 +11,7 @@
                 <el-input v-model="userdata.password"  placeholder="请输入您的密码"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button><i>登录</i></el-button>
+                <el-button @click="toLogin"><i>登录</i></el-button>
             </el-form-item>
             <el-form-item>
                 没有账号？<span @click="toregiter">去注册</span>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "",
   data() {
@@ -35,6 +36,25 @@ export default {
       toregiter(){
           this.$router.push('/register')
       },
+      toLogin(){
+          this.$axios.post("/user/login", this.userdata)
+        // axios.post("http://localhost:3000/user/login", this.userdata)
+        .then(res => {
+            console.log(res)
+          if (res.code == 200) {
+            this.$message.success("登录成功了，快去玩耍吧");
+            this.$store.commit('CHANGEUSERINFO',res.data)
+            setTimeout(()=>{
+                this.$router.push('/index')
+            },1000)
+          } else {
+            this.$message({
+              message: res.msg,
+              type: "error"
+            });
+          }
+        });
+      }
   }
 };
 </script>

@@ -7,12 +7,12 @@ import  createPersistedState  from 'vuex-persistedstate'
 Vue.use(vuex)
 
 const state ={
-    
+    userinfo:''
 }
 
 const mutations ={
     'CHANGEUSERINFO'(state,payload){
-        
+        state.userinfo=payload
     },
 }
 

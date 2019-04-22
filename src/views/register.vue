@@ -22,76 +22,97 @@
                 <el-input v-model="userdata.password"  placeholder="请输入您的密码"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button><i>注册</i></el-button>
+                <el-button @click="toRegister"><i>注册</i></el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "",
   data() {
     return {
-      userdata:{
-          avatar:'',
-          username:'',
-          password:''
+      userdata: {
+        avatar: "",
+        username: "",
+        password: ""
       },
-      obj:{
-          token:''
+      obj: {
+        token: ""
       }
     };
   },
   methods: {
-      handleAvatarSuccess(file) {
-          this.userdata.avatar = file.url;
-      },
-      getToken(){
-          axios.get("http://upload.yaojunrong.com/getToken").then(res => {
-                   this.obj.token=res.data.data
-                //    console.log( this.obj.token)
+    handleAvatarSuccess(file) {
+      this.userdata.avatar = file.url;
+    },
+    getToken() {
+      axios.get("http://upload.yaojunrong.com/getToken").then(res => {
+        this.obj.token = res.data.data;
+        //    console.log( this.obj.token)
       });
+    },
+    toRegister() {
+      if (this.userdata.username) {
+        if (this.userdata.password.length < 6) {
+          this.$message.info("密码不够6位数啊");
+        } else {
+          this.$axios.post("/user/register", this.userdata).then(res => {
+            if (res.code == 200) {
+              this.$message.success("注册成功，跳转到登录页");
+              this.$router.push('/login')
+            } else {
+              this.$message({
+                message: res.msg,
+                type: "error"
+              });
+            }
+          });
+        }
+      } else {
+        this.$message.error("用户名和密码不能为空");
       }
+    }
   },
   created() {
-      this.getToken()
-  },
+    this.getToken();
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.login-wrap{
-    width: 420px;
-    margin:  0 auto;
-    margin-top: 100px;
-    color: aliceblue;
-    border-radius: 8px;
-    background-color: rgb(146, 142, 163);
-    padding: 40px 50px;
-    h3{
-        font-size: 28px;
-        margin: 20px 0px;
-    }
-    .el-button{
-        font-size: 16px;
-        width: 100%;
-        border: none;
-    }
-    .el-button:hover{
-        background-color: rgb(55, 61, 70);
-        color: #fff;
-    }
-     /deep/ .el-form-item__label{
-        color: #fff;
-    }
-    .el-form-item span{
-        color: rgb(35, 13, 236);
-        cursor: pointer;
-    }
- .el-icon-plus {
-   border-radius: 6px;
+.login-wrap {
+  width: 420px;
+  margin: 0 auto;
+  margin-top: 100px;
+  color: aliceblue;
+  border-radius: 8px;
+  background-color: rgb(146, 142, 163);
+  padding: 40px 50px;
+  h3 {
+    font-size: 28px;
+    margin: 20px 0px;
+  }
+  .el-button {
+    font-size: 16px;
+    width: 100%;
+    border: none;
+  }
+  .el-button:hover {
+    background-color: rgb(55, 61, 70);
+    color: #fff;
+  }
+  /deep/ .el-form-item__label {
+    color: #fff;
+  }
+  .el-form-item span {
+    color: rgb(35, 13, 236);
+    cursor: pointer;
+  }
+  .el-icon-plus {
+    border-radius: 6px;
     border: 1px dashed #e5e4e4;
     font-size: 28px;
     color: #e5e4e4;
