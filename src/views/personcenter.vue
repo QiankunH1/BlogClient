@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     tab(index) {
-      console.log(index);
+      // console.log(index);
       this.num = index;
       this.componentId = this.arr[index];
     }
