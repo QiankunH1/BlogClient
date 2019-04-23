@@ -13,6 +13,8 @@ const components={
   index:()=>import('@/views/index.vue'),
   login:()=>import('@/views/login.vue'),
   register:()=>import('@/views/register.vue'),
+  // person:()=>import('@/views/person.vue'),
+  personcenter:()=>import('@/views/personcenter.vue'),
 }
 
 
@@ -39,7 +41,16 @@ var router=new Router({
         name: 'register',
         component: components.register
          },
-
+        {
+        path: 'personcenter',
+        name: 'personcenter',
+        component: components.personcenter
+         },
+        {
+        path: 'person',
+        name: 'person',
+        component: components.person
+         },
     ]
     },
    

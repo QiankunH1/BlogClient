@@ -44,6 +44,7 @@ export default {
           if (res.code == 200) {
             this.$message.success("登录成功了，快去玩耍吧");
             this.$store.commit('CHANGEUSERINFO',res.data)
+            console.log(this.$store.state.userinfo)
             setTimeout(()=>{
                 this.$router.push('/index')
             },1000)

@@ -12,11 +12,11 @@
             <div class="login" v-if="$store.state.userinfo">
                 <el-dropdown>
                     <span>
-                        <img :src="userinfo.avatar" alt="">
+                        <img :src="$store.state.userinfo.avatar" alt="">
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>{{userinfo.username}}</el-dropdown-item>
-                        <el-dropdown-item>个人中心</el-dropdown-item>
+                        <el-dropdown-item >{{$store.state.userinfo.username}}</el-dropdown-item>
+                        <el-dropdown-item @click.native="toPersoncenter">个人中心</el-dropdown-item>
                         <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -33,7 +33,7 @@
 export default {
   data() {
     return {
-      userinfo: ""
+      // userinfo: ""
     };
   },
   methods: {
@@ -44,17 +44,19 @@ export default {
       this.$router.push("/login");
     },
     logout(){
-        console.log('111')
         this.$axios.get('/user/logout').then(res=>{
             this.$message.info(res.msg)
             this.$store.commit('CHANGEUSERINFO',null)
 
         })
-    }
+    },
+    toPersoncenter(){
+      this.$router.push('/personcenter')
+    },
   },
   created() {
     this.userinfo = this.$store.state.userinfo;
-    console.log(this.userinfo);
+    // console.log(this.userinfo);
   }
 };
 </script>
@@ -70,8 +72,6 @@ export default {
   line-height: 70px;
   font-size: 20px;
   display: inline-block;
-  // text-align: left;
-  // padding-left: 200px;
   span {
     display: inline-block;
     margin-right: 50px;
