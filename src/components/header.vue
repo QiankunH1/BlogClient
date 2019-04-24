@@ -44,7 +44,7 @@ export default {
       this.$router.push("/login");
     },
     logout(){
-        this.$axios.get('/user/logout').then(res=>{
+        this.$axios.post('/user/logout').then(res=>{
             this.$message.info(res.msg)
             this.$store.commit('CHANGEUSERINFO',null)
 

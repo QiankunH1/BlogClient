@@ -13,6 +13,7 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = xhr
+ 
 
 /* eslint-disable no-new */
 new Vue({

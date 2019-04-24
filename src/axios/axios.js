@@ -13,6 +13,10 @@ const instance = axios.create({
 const xhr = {
     get(url,data,config){
         return new Promise ((resolve,reject)=>{
+            config = {
+                ...config,
+                withCredentials:true
+            }
             instance.get(url,{params:data},config).then(res=>{
                 resolve(res.data)
                 console.log(url)
@@ -23,6 +27,10 @@ const xhr = {
     },
     fetch(url,data,config,methods){
         return new Promise((resolve,reject)=>{
+            config = {
+                ...config,
+                withCredentials:true
+            }
             instance[methods](url,data,config).then(res=>{
                 console.log(url)
                 resolve(res.data)

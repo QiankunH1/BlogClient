@@ -37,6 +37,7 @@ export default {
           this.$router.push('/register')
       },
       toLogin(){
+        //   this.$axios.get("/user/login", this.userdata)
           this.$axios.post("/user/login", this.userdata)
         // axios.post("http://localhost:3000/user/login", this.userdata)
         .then(res => {
