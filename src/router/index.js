@@ -15,6 +15,7 @@ const components={
   register:()=>import('@/views/register.vue'),
   // person:()=>import('@/views/person.vue'),
   personcenter:()=>import('@/views/personcenter.vue'),
+  chat:()=>import('@/views/chat.vue'),
 }
 
 
@@ -46,10 +47,15 @@ var router=new Router({
         name: 'personcenter',
         component: components.personcenter
          },
+        // {
+        // path: 'person',
+        // name: 'person',
+        // component: components.person
+        //  },
         {
-        path: 'person',
-        name: 'person',
-        component: components.person
+        path: 'chat',
+        name: 'chat',
+        component: components.chat
          },
     ]
     },

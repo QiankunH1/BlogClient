@@ -7,7 +7,7 @@
             <router-link >写博文</router-link> -->
             <span @click="toindex">首页</span>
             <span>博文</span>
-            <span>交流</span>
+            <span @click="toChat">交流</span>
             <span>写博文</span>
             <div class="login" v-if="$store.state.userinfo">
                 <el-dropdown>
@@ -53,6 +53,9 @@ export default {
     toPersoncenter(){
       this.$router.push('/personcenter')
     },
+    toChat(){
+      this.$router.push('/chat')
+    }
   },
   created() {
     this.userinfo = this.$store.state.userinfo;
