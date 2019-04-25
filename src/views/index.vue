@@ -15,7 +15,7 @@
         },
         methods: {
             btn(){
-                this.$axios.post('/user/test').then(res=>{
+                this.$axios.get('/user/test').then(res=>{
                     console.log(res)
                 })
             }
