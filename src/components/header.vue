@@ -78,6 +78,7 @@ export default {
   span {
     display: inline-block;
     margin-right: 50px;
+    cursor: pointer;
   }
 }
 .login {
