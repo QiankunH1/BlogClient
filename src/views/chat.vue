@@ -45,7 +45,7 @@ import io from 'socket.io-client';
             this.connection();
         },
          beforeDestroy() {
-             websocket.close();
+            //  websocket.close();
         }
     }
 </script>
@@ -74,6 +74,7 @@ import io from 'socket.io-client';
             height: 40px;
             line-height: 40px;
             color: rgb(245, 216, 179);
+            overflow: hidden;
         }
     }
 }
