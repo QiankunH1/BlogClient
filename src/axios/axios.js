@@ -1,11 +1,14 @@
 
 import axios from 'axios'
 import qs from 'qs'
-// const env = process.env.NODE_ENV
-// let baseURL = env=='development'?'/api':'/'
+const env = process.env.NODE_ENV
+let baseURL = env=='development'?'/api':'/'
 // console.log('baseURL',baseURL)
-let baseURL = 'http://localhost:3000'
-console.log('baseURL', baseURL)
+// let baseURL = 'http://localhost:3000'
+
+// let baseURL = 'https://openapi.kujiale.com/'
+// let baseURL = 'http://api.nsrjlb.com.cn'
+
 const instance = axios.create({
     baseURL,
     timeout: 1500,

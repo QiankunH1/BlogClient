@@ -13,6 +13,8 @@ module.exports = {
     proxyTable: {
       '/api':{
         target:'http://localhost:3000',
+        // target:'https://openapi.kujiale.com',
+        // target:'https://api.nsrjlb.com.cn',
         changeOrigin:true,
         pathRewrite:{
           '^/api':'/'
